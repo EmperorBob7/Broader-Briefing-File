@@ -132,7 +132,7 @@ export function incrementUsers() {
     userCount++;
 }
 
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
     const dt = sendAt('0 0 * * *');
     console.log(`Daily at: ${dt.toISO()}`);
     await connectToDB();
