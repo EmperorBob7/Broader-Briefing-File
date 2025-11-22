@@ -8,6 +8,7 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/*.js": true
+        "public/**/*.js": true,
+        "src/**/*.js": true
     }
 }
