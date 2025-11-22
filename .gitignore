@@ -1,3 +1,5 @@
+*.js
+
 # Node.js
 node_modules/
 npm-debug.log*
@@ -18,9 +20,6 @@ jspm_packages/
 
 # Typescript v1 declaration files
 typings/
-
-# Optional VS Code settings
-.vscode/
 
 # Production build
 dist/

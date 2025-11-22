@@ -1,0 +1,13 @@
+{
+    "C_Cpp.intelliSenseMemoryLimit": 4096,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "outline.collapseItems": "alwaysCollapse",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.js": true
+    }
+}

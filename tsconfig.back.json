@@ -1,18 +1,16 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "module": "ES6",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "outDir": "./src/compiledTS",
+        "outDir": "./src",
         "allowJs": true,
-        "lib": ["DOM", "ES6"],
-        "typeRoots": [
-            "./src/*.d.ts"
-        ]
+        "lib": ["DOM", "ES6"]
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*.ts", "src/**/*.d.ts"],
     "exclude": ["node_modules", "dist"]
 }

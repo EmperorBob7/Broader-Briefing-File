@@ -1,10 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
-import { jwtCheck, isAnyArgUndefined, reqHasBody, STARTING_BALANCE } from './auth';
-import { StockMarket } from './schemas/stockMarket';
-import { User } from './schemas/user';
-import { Admin, IAdmin } from './schemas/admin';
-import { getStockMarketStocksInOrder } from './stocks';
+
+import { jwtCheck, isAnyArgUndefined, reqHasBody, STARTING_BALANCE } from './auth.js';
+import { StockMarket } from './schemas/stockMarket.js';
+import { User } from './schemas/user.js';
+import { Admin, IAdmin } from './schemas/admin.js';
+import { getStockMarketStocksInOrder } from './stocks.js';
 
 export const router = express.Router();
 let adminInfo: IAdmin; // Initialize in index.ts

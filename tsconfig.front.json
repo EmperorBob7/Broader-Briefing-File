@@ -6,11 +6,11 @@
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "outDir": "./public/compiledTS",
+      "outDir": "./public/",
       "allowJs": true,
       "lib": ["DOM", "ES6"],
-      "incremental": true
+      "incremental": true,
     },
     "include": ["public/**/*.ts", "public/**/*.d.ts"],
-    "exclude": ["node_modules", "dist", "public/compiledTS"]
+    "exclude": ["node_modules", "dist"]
   }  

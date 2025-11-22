@@ -1,5 +1,6 @@
 import { SquadRankings, Ranking, RankingSquad } from "./rankings.js";
 import { CharacterData, Character } from "./character.js";
+import { $id } from "../utils.js";
 declare const Chart: any;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const characterID = queryParams.get("id");
     const characterData: Character = CharacterData[Number(characterID || "0")];
     // Emblem
-    document.getElementById("emblem")!.addEventListener("load", (): void => {
+    $id("emblem").addEventListener("load", (): void => {
         const emblemElement: HTMLObjectElement | null = document.querySelector("#emblem");
         if (emblemElement) {
             const contentDocument = emblemElement.contentDocument;
@@ -27,19 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // Name + Other Text
-    document.getElementById("characterName")!.innerText = characterData["Name (Western)"];
-    document.getElementById("position")!.innerText = `POSITION: ${characterData.Position.toUpperCase() || "UNKNOWN"}`;
-    document.getElementById("age")!.innerText = `AGE: ${characterData.Age || "?"} YEARS OLD`;
-    document.getElementById("birthday")!.innerText = `BIRTHDAY: ${convertDateToString(characterData.BirthMonth, characterData.BirthDay) || "UNKNOWN"}`;
-    document.getElementById("height")!.innerText = `HEIGHT: ${characterData.Height || "UNKNOWN "}CM`;
-    document.getElementById("bloodType")!.innerText = `BLOOD TYPE: ${characterData.BloodType || "UNKNOWN"}`;
-    document.getElementById("zodiac")!.innerText = `ZODIAC: THE ${characterData.Zodiac.toUpperCase() || "UNKNOWN"}`;
-    // document.getElementById("occupation").innerText = `OCCUPATION: ` + characterData.Occupation; // TODO
-    // document.getElementById("likes").innerText = `LIKES: ` + characterData.Likes; // TODO
+    $id("characterName").innerText = characterData["Name (Western)"];
+    $id("position").innerText = `POSITION: ${characterData.Position.toUpperCase() || "UNKNOWN"}`;
+    $id("age").innerText = `AGE: ${characterData.Age || "?"} YEARS OLD`;
+    $id("birthday").innerText = `BIRTHDAY: ${convertDateToString(characterData.BirthMonth, characterData.BirthDay) || "UNKNOWN"}`;
+    $id("height").innerText = `HEIGHT: ${characterData.Height || "UNKNOWN "}CM`;
+    $id("bloodType").innerText = `BLOOD TYPE: ${characterData.BloodType || "UNKNOWN"}`;
+    $id("zodiac").innerText = `ZODIAC: THE ${characterData.Zodiac.toUpperCase() || "UNKNOWN"}`;
+    // $id("occupation").innerText = `OCCUPATION: ` + characterData.Occupation; // TODO
+    // $id("likes").innerText = `LIKES: ` + characterData.Likes; // TODO
     displayTriggers(characterData);
+    
     // Radar Chart
-    document.getElementById("totalNumber")!.innerText = String(Number(characterData.Trion) + Number(characterData.Attack) + Number(characterData.DefenceSupport) + Number(characterData.Mobility) + Number(characterData.Skill) + Number(characterData.Range) + Number(characterData.Command) + Number(characterData.SpecialTactics));
-    const ctx = (document.getElementById("radarChart") as HTMLCanvasElement)!.getContext("2d");
+    $id("totalNumber").innerText = String(Number(characterData.Trion) + Number(characterData.Attack) + Number(characterData.DefenceSupport) + Number(characterData.Mobility) + Number(characterData.Skill) + Number(characterData.Range) + Number(characterData.Command) + Number(characterData.SpecialTactics));
+    
+    const radarChart = $id("radarChart") as HTMLCanvasElement;
+    const ctx = radarChart.getContext("2d");
     const data = {
         labels: [
             ['TRION', `${characterData.Trion}`],
@@ -124,21 +128,21 @@ function displayTriggers(characterData: Character) {
     const subTriggers = [characterData.Sub1, characterData.Sub2, characterData.Sub3, characterData.Sub4];
     for (let i = 1; i <= 4; i++) {
         if (mainTriggers[i - 1] === "") {
-            document.getElementById(`mainTrigger${i}`)!.classList.add("freeTrigger");
+            $id(`mainTrigger${i}`).classList.add("freeTrigger");
         } else {
-            document.getElementById(`mainTrigger${i}`)!.classList.remove("freeTrigger");
+            $id(`mainTrigger${i}`).classList.remove("freeTrigger");
         }
-        document.getElementById(`main${i}Image`)!.setAttribute("src", getTriggerImage(mainTriggers[i - 1]));
-        document.getElementById(`main${i}Name`)!.innerText = mainTriggers[i - 1].toUpperCase().replace(":", ":\n") || "FREE TRIGGER";
-        document.getElementById(`main${i}Type`)!.innerText = getTriggerType(mainTriggers[i - 1]);
+        $id(`main${i}Image`).setAttribute("src", getTriggerImage(mainTriggers[i - 1]));
+        $id(`main${i}Name`).innerText = mainTriggers[i - 1].toUpperCase().replace(":", ":\n") || "FREE TRIGGER";
+        $id(`main${i}Type`).innerText = getTriggerType(mainTriggers[i - 1]);
         if (subTriggers[i - 1] === "") {
-            document.getElementById(`subTrigger${i}`)!.classList.add("freeTrigger");
+            $id(`subTrigger${i}`).classList.add("freeTrigger");
         } else {
-            document.getElementById(`subTrigger${i}`)!.classList.remove("freeTrigger");
+            $id(`subTrigger${i}`).classList.remove("freeTrigger");
         }
-        document.getElementById(`sub${i}Image`)!.setAttribute("src", getTriggerImage(subTriggers[i - 1]));
-        document.getElementById(`sub${i}Name`)!.innerText = subTriggers[i - 1].toUpperCase().replace(":", ":\n") || "FREE TRIGGER";
-        document.getElementById(`sub${i}Type`)!.innerText = getTriggerType(subTriggers[i - 1]);
+        $id(`sub${i}Image`).setAttribute("src", getTriggerImage(subTriggers[i - 1]));
+        $id(`sub${i}Name`).innerText = subTriggers[i - 1].toUpperCase().replace(":", ":\n") || "FREE TRIGGER";
+        $id(`sub${i}Type`).innerText = getTriggerType(subTriggers[i - 1]);
     }
 }
 

@@ -1,11 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
-import mongoose, { ObjectId } from 'mongoose';
-import { User } from './schemas/user';
+import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import Filter from 'bad-words';
-import { incrementUsers, userCount } from '.';
+
+import { incrementUsers } from './index.js';
+import { User } from './schemas/user.js';
 
 export const router = express.Router();
 export interface JwtPayload {
@@ -89,7 +90,7 @@ router.post("/login", reqHasBody, async (req, res) => {
     // Password Check
     if (bcrypt.compareSync(inputs.password, user.password as string)) {
         const payload: JwtPayload = {
-            userID: (user._id as ObjectId).toString(),
+            userID: (user._id as mongoose.Types.ObjectId).toString(),
             name: user.name as string
         };
         const token = jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: "7d" });
@@ -119,7 +120,7 @@ export async function connectToDB() {
     try {
         await mongoose.connect(process.env.MONGO_URI as string);
         console.log("connected");
-    } catch (e) {
+    } catch (e: any) {
         console.log(e.message);
     }
 }
@@ -175,7 +176,7 @@ export function jwtCheck(req: Request, res: Response, next: NextFunction) {
  * @param argList Required Arguments
  * @returns 
  */
-export function isAnyArgUndefined(inputs: object, argList: string[]) {
+export function isAnyArgUndefined(inputs: any, argList: string[]) {
     for (const arg of argList) {
         if (inputs[arg] === undefined) {
             return true;

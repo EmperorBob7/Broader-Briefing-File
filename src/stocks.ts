@@ -1,12 +1,11 @@
 import express from 'express';
 import queue from 'express-queue';
 import cookieParser from 'cookie-parser';
-import { jwtCheck, reqHasBody, isAnyArgUndefined, JwtPayload, STARTING_BALANCE } from "./auth";
-import { User } from './schemas/user';
-import { IStockMarket, StockMarket } from './schemas/stockMarket';
-import { canBuyStocks } from './admin';
-import mongoose from 'mongoose';
-import { userCount } from '.';
+import { jwtCheck, reqHasBody, isAnyArgUndefined, JwtPayload } from "./auth.js";
+import { User } from './schemas/user.js';
+import { IStockMarket, StockMarket } from './schemas/stockMarket.js';
+import { canBuyStocks } from './admin.js';
+import { userCount } from './index.js';
 
 export const router = express.Router();
 

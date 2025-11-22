@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 export interface IAdmin extends Document {
   canBuyStocks: boolean;
