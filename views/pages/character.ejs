@@ -13,9 +13,6 @@
     <script>
         let loggedIn = <%= auth.loggedIn %>
     </script>
-    <script src='./main.js' type="module"></script>
-    <script src='./character.js' type="module"></script>
-    <script src='./rankings.js' type="module"></script>
 </head>
 
 <body>
@@ -119,9 +116,11 @@
     </main>
 
     <%- include("../partials/footer") %>
-
+    <script src='./main.js' type="module"></script>
+    <script src='./character/character.js' type="module"></script>
+    <script src='./character/rankings.js' type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./characterLogic.js" type="module"></script>
+    <script src="./character/characterLogic.js" type="module"></script>
 </body>
 
 </html>

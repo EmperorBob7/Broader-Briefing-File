@@ -13,8 +13,6 @@
     <script>
         let loggedIn = <%= auth.loggedIn %>;
     </script>
-    <script src='main.js' type="module"></script>
-    <script src='leaderboard/script.js' type="module"></script>
 </head>
 
 <body>
@@ -38,6 +36,8 @@
     </main>
 
     <%- include("../partials/footer") %>
+    <script src='main.js' type="module"></script>
+    <script src='./leaderboard/script.js' type="module"></script>
 </body>
 
 </html>

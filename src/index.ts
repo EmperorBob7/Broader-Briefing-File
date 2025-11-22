@@ -81,7 +81,7 @@ app.get("/stockData", async (req, res) => {
     return res.json(await getStockMarketStocksInOrder());
 });
 
-app.get("/stockValues", cacheSeconds(10), async (req, res) => {
+app.get("/stockValues", cacheSeconds(60), async (req, res) => {
     const stocks = await getStockMarketStocksInOrder();
     const values: number[] = [];
     for (let i = 0; i < stocks.length; i++) {

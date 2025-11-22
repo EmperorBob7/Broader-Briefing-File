@@ -96,7 +96,7 @@ router.post("/login", reqHasBody, async (req, res) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: "7d" });
         res.cookie('token', token, {
             httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 * 7, // 7 Days
+            maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
             secure: true
         });
 

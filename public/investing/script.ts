@@ -1,4 +1,3 @@
-import { Chart } from "chart.js";
 import * as Globals from "../main.js";
 import { $id, $idInput } from "../utils.js";
 Globals.loginListeners.push(loadIndividualData);

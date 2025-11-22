@@ -13,9 +13,6 @@
     <script>
         let loggedIn = <%= auth.loggedIn %>
     </script>
-    <script src='./main.js' type="module"></script>
-    <script src='./character.js' type="module"></script>
-    <script src='./rankings.js' type="module"></script>
 </head>
 
 <body>
@@ -49,6 +46,9 @@
             document.getElementById("canonNav").classList.add("navSelected");
         });
     </script>
+    <script src='./main.js' type="module"></script>
+    <script src='./character/character.js' type="module"></script>
+    <script src='./character/rankings.js' type="module"></script>
     <script src='./canon/script.js' type="module"></script>
 </body>
 

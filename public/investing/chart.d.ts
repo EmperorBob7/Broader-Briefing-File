@@ -1,65 +1,66 @@
-// Definitions for chart.js
+type ChartType =
+  | "line"
+  | "bar"
+  | "pie"
+  | "doughnut"
+  | "radar"
+  | "polarArea"
+  | "bubble"
+  | "scatter";
 
-declare module "chart.js" {
-  export type ChartType =
-    | "line"
-    | "bar"
-    | "pie"
-    | "doughnut"
-    | "radar"
-    | "polarArea"
-    | "bubble"
-    | "scatter";
+interface ChartDataset<TType extends ChartType = ChartType, TData = number[]> {
+  label?: string;
+  data: TData;
+  backgroundColor?: string | string[];
+  borderColor?: string | string[];
+  borderWidth?: number;
+  fill?: boolean | string;
+  parsing?: boolean;
+  tension?: number;
+}
 
-  export interface ChartDataset<TType extends ChartType = ChartType, TData = number[]> {
-    label?: string;
-    data: TData;
-    backgroundColor?: string | string[];
-    borderColor?: string | string[];
-    borderWidth?: number;
-    fill?: boolean | string;
-    parsing?: boolean;
-    tension?: number;
-  }
+interface ChartOptions<TType extends ChartType = ChartType> {
+  responsive?: boolean;
+  maintainAspectRatio?: boolean;
+  plugins?: any;
+  scales?: any;
+  animation?: any;
+  onClick?: (event: unknown, elements: unknown[]) => void;
+}
 
-  export interface ChartOptions<TType extends ChartType = ChartType> {
-    responsive?: boolean;
-    maintainAspectRatio?: boolean;
-    plugins?: any;
-    scales?: any;
-    animation?: any;
-    onClick?: (event: unknown, elements: unknown[]) => void;
-  }
+interface ChartConfiguration<
+  TType extends ChartType = ChartType,
+  TData = number[],
+  TDataset = ChartDataset<TType, TData>
+> {
+  type: TType;
+  data: {
+    labels?: string[];
+    datasets: TDataset[];
+  };
+  options?: ChartOptions<TType>;
+  plugins?: any[];
+}
 
-  export interface ChartConfiguration<
-    TType extends ChartType = ChartType,
-    TData = number[],
-    TDataset = ChartDataset<TType, TData>
-  > {
-    type: TType;
-    data: {
-      labels?: string[];
-      datasets: TDataset[];
-    };
-    options?: ChartOptions<TType>;
-    plugins?: any[];
-  }
+interface ChartData<TType extends ChartType = ChartType, TData = number[]> {
+  labels?: string[];
+  datasets: ChartDataset<TType, TData>[];
+}
 
-  export class Chart<
-    TType extends ChartType = ChartType,
-    TData = number[],
-    TDataset = ChartDataset<TType, TData>
-  > {
-    constructor(
-      context: CanvasRenderingContext2D | HTMLCanvasElement,
-      config: ChartConfiguration<TType, TData, TDataset>
-    );
+declare class Chart<
+  TType extends ChartType = ChartType,
+  TData = number[],
+  TDataset = ChartDataset<TType, TData>
+> {
+  constructor(
+    context: CanvasRenderingContext2D | HTMLCanvasElement,
+    config: ChartConfiguration<TType, TData, TDataset>
+  );
 
-    readonly data: ChartData<TType, TData>;
-    
-    setDatasetVisibility(index: number, visible: boolean): void;
-    update(): void;
-    destroy(): void;
-    resize(): void;
-  }
+  readonly data: ChartData<TType, TData>;
+
+  setDatasetVisibility(index: number, visible: boolean): void;
+  update(): void;
+  destroy(): void;
+  resize(): void;
 }

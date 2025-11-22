@@ -1,4 +1,4 @@
-import { $id, $idDialog, $idInput } from "./utils";
+import { $id, $idDialog, $idInput } from "./utils.js";
 
 let userID: string;
 let userName: string;

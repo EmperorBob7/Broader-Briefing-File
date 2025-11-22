@@ -1,4 +1,3 @@
-import * as Globals from "../main.js";
 import { $id } from "../utils.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
