@@ -8,6 +8,89 @@ import { canBuyStocks } from './admin.js';
 import { userCount } from './index.js';
 
 export const router = express.Router();
+export const currentStockMarket = [
+    {
+        stockName: 'Utagawa Squad',
+        stockLabel: 'UTG',
+    },
+    {
+        stockName: 'Oji Squad',
+        stockLabel: 'OJI',
+    },
+    {
+        stockName: 'Kakizaki Squad',
+        stockLabel: 'KKZ',
+    },
+    {
+        stockName: 'Kitazoe Squad',
+        stockLabel: 'KTZ',
+    },
+    {
+        stockName: 'Kuruma Squad',
+        stockLabel: 'KRM',
+    },
+    {
+        stockName: 'Kodera Squad',
+        stockLabel: 'KDR',
+    },
+    {
+        stockName: 'Suwa Squad',
+        stockLabel: 'SWA',
+    },
+    {
+        stockName: 'Ninomiya Squad',
+        stockLabel: 'NMY',
+    },
+    {
+        stockName: 'Mizukami Squad',
+        stockLabel: 'MZK',
+    },
+    {
+        stockName: 'Murakami Squad',
+        stockLabel: 'MRK',
+    },
+    {
+        stockName: 'Wakamura Squad',
+        stockLabel: 'WKM',
+    },
+    {
+        stockName: 'Katagiri Squad',
+        stockLabel: 'KTG',
+    },
+    {
+        stockName: 'Miwa Squad',
+        stockLabel: 'MWA',
+    },
+    {
+        stockName: 'Kako Squad',
+        stockLabel: 'KKO',
+    },
+    {
+        stockName: 'Arashiyama Squad',
+        stockLabel: 'ARA',
+    },
+    {
+        stockName: 'Kusakabe Squad',
+        stockLabel: 'KKB',
+    },
+    {
+        stockName: 'Kazama Squad',
+        stockLabel: 'KAZ',
+    },
+    {
+        stockName: 'Fuyushima Squad',
+        stockLabel: 'FYM',
+    },
+    {
+        stockName: 'Tamakoma-1',
+        stockLabel: 'TKO',
+    },
+    {
+        stockName: 'Tachikawa Squad',
+        stockLabel: 'TIK',
+    },
+];
+export const NUM_STOCKS = currentStockMarket.length;
 
 router.use(cookieParser());
 router.use(jwtCheck);
@@ -44,7 +127,7 @@ router.post("/buyStock", reqHasBody, async (req, res) => {
     if (typeof (stockID) !== 'number' || typeof (buyCount) !== 'number') {
         return res.status(401).json({ msg: "Broken Field" });
     }
-    if (stockID < 0 || stockID > 11 || buyCount <= 0) {
+    if (stockID < 0 || stockID >= NUM_STOCKS || buyCount <= 0) {
         return res.status(401).json({ msg: "Invalid Field" });
     }
     // Get Stock
@@ -94,7 +177,7 @@ router.post("/sellStock", reqHasBody, async (req, res) => {
     if (typeof (stockID) !== 'number' || typeof (sellCount) !== 'number') {
         return res.status(401).json({ msg: "Broken Field" });
     }
-    if (stockID < 0 || stockID > 11 || sellCount <= 0) {
+    if (stockID < 0 || stockID > NUM_STOCKS || sellCount <= 0) {
         return res.status(401).json({ msg: "Invalid Field" });
     }
     // Get Stock

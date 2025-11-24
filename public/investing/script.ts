@@ -41,10 +41,11 @@ let chart: Chart;
 const stockCounts: number[] = []; // Number of stocks owned by User
 let stockValues: number[] = [];   // Stock values for Stock Listing UI
 
+const STARTING_CHAPTER = 257;
 document.addEventListener('DOMContentLoaded', async () => {
-    const latestChapter = 207 + (await (await fetch("/numChaps")).json()).count;
-    const chapterCount = latestChapter - 207 + 1;
-    for (let i = 207; i <= latestChapter; i++) {
+    const latestChapter = STARTING_CHAPTER + (await (await fetch("/numChaps")).json()).count;
+    const chapterCount = latestChapter - STARTING_CHAPTER + 1;
+    for (let i = STARTING_CHAPTER; i <= latestChapter; i++) {
         labels.push(i.toString());
     }
 
@@ -136,18 +137,26 @@ async function loadDataSet() {
     const json = await response.json();
     stockData = json;
     const borderColors = [
-        "rgba(180,140,228, 1.0)", // Utagawa
+        "rgba(87, 180, 242, 1.0)", // Utagawa
         "rgba(175, 248, 251, 1.0)", // Oji
         "rgba(255, 151, 50, 1.0)", // Kakizaki
-        "rgba(54, 162, 255, 1.0)", // Kitazoe
-        "rgba(255, 206, 86, 1.0)", // Kuruma
+        "rgba(237, 205, 114, 1.0)", // Kitazoe
+        "rgba(240, 121, 70, 1.0)", // Kuruma
         "rgba(153, 102, 255, 1.0)", // Kodera
         "rgba(141, 224, 151, 1.0)", // Suwa
         "rgba(20, 192, 220, 1.0)", // Ninomiya
         "rgba(255, 50, 71, 1.0)", // Mizukami
         "rgba(10, 255, 149, 1.0)", // Murakami
         "rgba(238, 49, 215, 1.0)", // Wakamura
-        "rgba(255, 255, 255, 1.0)" // Brian
+        "rgba(255, 255, 255, 1.0)", // Katagiri
+        "rgba(155, 28, 252, 1.0)", // Miwa
+        "rgba(108, 7, 184, 1.0)", // Kako
+        "rgba(191, 9, 47, 1.0)", // Arashiyama
+        "rgba(87, 105, 60, 1.0)", // Kusakabe
+        "rgba(54, 162, 255, 1.0)", // Kazama
+        "rgba(173, 125, 92, 1.0)", // Fuyushima
+        "rgba(92, 173, 147, 1.0)", // Tamakoma-1
+        "rgba(156, 2, 4, 1.0)", // Tachikawa
     ];
 
     for (let i = 0; i < json.length; i++) {
@@ -170,7 +179,7 @@ async function loadDataSet() {
 
 function updateChart() {
     const sliderMin = $idInput("minRange");
-    const minValue = parseInt(sliderMin.value) - 207;
+    const minValue = parseInt(sliderMin.value) - STARTING_CHAPTER;
     const trimmedLabels = labels.slice(minValue);
     for (let i = 0; i < datasets.length; i++) {
         datasets[i].data = originalDatasets[i].slice(minValue);

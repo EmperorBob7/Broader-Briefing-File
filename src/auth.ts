@@ -7,6 +7,7 @@ import Filter from 'bad-words';
 
 import { incrementUsers } from './index.js';
 import { User } from './schemas/user.js';
+import { NUM_STOCKS } from './stocks.js';
 
 export const router = express.Router();
 export interface JwtPayload {
@@ -48,7 +49,10 @@ router.post("/register", reqHasBody, async (req, res) => {
         name: inputs.name,
         password: hashedPassword,
         balance: STARTING_BALANCE,
-        stocks: new Array(12).fill(0)
+        stocks: new Array(NUM_STOCKS).fill(0),
+        // Phase One
+        balancePhaseOne: 0,
+        stocksPhaseOne: new Array(NUM_STOCKS).fill(0)
     });
     incrementUsers();
     return res.status(200).json({ msg: "Success" });
