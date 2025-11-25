@@ -1,11 +1,23 @@
-.input img {
-    height: 50%;
+#searchbar {
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+    height: 6vh;
+    background-color: var(--mid);
+    border: 1px solid var(--primary);
+    padding: 0.5em;
+    border-radius: 0.25rem;
+}
+
+#searchbar img {
     filter: invert(56%) sepia(45%) saturate(687%) hue-rotate(97deg) brightness(90%) contrast(92%);
 }
 
-.input {
+input {
     max-width: fit-content;
-    border-color: var(--primary);
+    border: transparent;
+    background-color: transparent;
+    color: var(--light);
 }
 
 input:focus {

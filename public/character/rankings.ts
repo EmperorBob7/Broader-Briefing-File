@@ -46,7 +46,7 @@ export const SquadRankings: RankingSquad = {
         "emblem": "../images/emblems/Kazama.png"
     },
     "Kusakabe": {
-        "color": "#445566",
+        "color": "#547e2fff",
         "rank": "A",
         "position": "04",
         "emblem": "../images/emblems/Kusakabe.png"
@@ -76,19 +76,19 @@ export const SquadRankings: RankingSquad = {
         "emblem": "../images/emblems/Katagiri.png"
     },
     "Tamakoma": {
-        "color": "#2a86cf",
+        "color": "#65ade8ff",
         "rank": "/",
         "position": "/",
         "emblem": "../images/emblems/Border.png"
     },
     "Tamakoma-1": {
-        "color": "#2a86cf",
+        "color": "#2ab4cfff",
         "rank": "A",
         "position": "/",
         "emblem": "../images/emblems/Border.png"
     },
     "Ninomiya": {
-        "color": "#404f8c",
+        "color": "#5062a7ff",
         "rank": "B",
         "position": "001",
         "emblem": "../images/emblems/Ninomiya.png"
@@ -184,7 +184,7 @@ export const SquadRankings: RankingSquad = {
         "emblem": "../images/emblems/Border.png"
     },
     "Yoshizato": {
-        "color": "#54321e",
+        "color": "#855c44ff",
         "rank": "B",
         "position": "017",
         "emblem": "../images/emblems/Border.png"

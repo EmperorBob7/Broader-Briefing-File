@@ -1,6 +1,6 @@
 table {
     width: 80vw;
-    background-color: oklch(var(--n));
+    background-color: var(--neutral);
 }
 
 th, td {

@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./styles.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./query.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./index.css'>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
     <script>
         let loggedIn = <%= auth.loggedIn %>;
     </script>
 </head>
 
 <body>
+    <!-- Toast container -->
     <div class="toast toast-end toastParent">
-        <div id="globalToastContainer">
-        </div>
+        <div id="globalToastContainer"></div>
     </div>
+
+    <!-- Header -->
     <header id="header">
         <%- include("../partials/header"); %>
     </header>
 
-    <main class="flex flex-1">
-        <div class="hero">
-            <div class="hero-content flex-col lg:flex-row-reverse flex flex-1">
-                <img src="https://static.miraheze.org/worldtriggerwiki/5/54/Border_Emblem_2.png"
-                    class="max-w-sm rounded-lg shadow-2xl" width="15%" />
-                <div>
-                    <h1 class="text-5xl font-bold">Broader Briefing File</h1>
-                    <p class="py-6">The multi-use site connecting <i>World Trigger</i> fans.</p>
-                    <a href="./canon"><button class="btn btn-secondary">Get Started</button></a>
-                </div>
+    <!-- Main hero section -->
+    <main class="hero">
+        <div class="hero-content">
+            <img src="https://static.wikitide.net/worldtriggerwiki/f/fd/Border_Emblem.png" alt="Emblem" />
+            <div class="hero-text">
+                <h1>Broader Briefing File</h1>
+                <p>A collection of projections by and for <i>World Trigger</i> fans.</p>
+                <a href="./canon">
+                    <img src="./images/startImage.png" />
+                </a>
             </div>
         </div>
     </main>
 
-    <%- include("../partials/footer") %>
+    <!-- Footer -->
+    <footer>
+        <%- include("../partials/footer"); %>
+    </footer>
+
     <script src='main.js' type="module"></script>
 </body>
 

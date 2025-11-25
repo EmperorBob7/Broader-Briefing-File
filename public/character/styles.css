@@ -74,6 +74,11 @@ main > div {
     background-position-x: center;
 }
 
+#bbfContainer {
+    overflow: scroll;
+    aspect-ratio: 16 / 9;
+}
+
 .chart-container {
     position: relative;
     width: 360px;
@@ -378,4 +383,5 @@ trigger-block .triggerName {
     padding-right: 1vw;
     width: 80%;
     margin: auto;
+    list-style: none;
 }

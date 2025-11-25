@@ -122,7 +122,7 @@ main>div:first-child {
 stock-option {
     margin: 0.5vw;
     padding: 1em;
-    background-color: oklch(var(--bc));
+    background-color: var(--brightGray);
     color: black;
     border-radius: 1em;
     width: 18%;
