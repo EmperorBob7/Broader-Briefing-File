@@ -7,7 +7,7 @@ import { cacheSeconds } from 'route-cache';
 import { router as AuthRoute, connectToDB } from './auth.js';
 import { router as AdminRoute, loadAdmin } from './admin.js';
 import { getStockAdjustedValue, getStockMarketStocksInOrder, router as StockRoute } from './stocks.js';
-import { StockMarket } from './schemas/stockMarket.js';
+import { IStockMarket, StockMarket } from './schemas/stockMarket.js';
 import { User } from './schemas/user.js';
 
 const app = express();
@@ -81,32 +81,37 @@ app.get("/stockData", async (req, res) => {
     return res.json(await getStockMarketStocksInOrder());
 });
 
-app.get("/stockValues", cacheSeconds(60), async (req, res) => {
+app.get("/stockValues", cacheSeconds(20), async (req, res) => {
     const stocks = await getStockMarketStocksInOrder();
     const values: number[] = [];
+    const ownCounts: number[] = [];
     for (let i = 0; i < stocks.length; i++) {
-        const stock = stocks[i];
+        const stock: IStockMarket = stocks[i];
         values.push(await getStockAdjustedValue(stock.stockValue, stock.ownCount));
+        ownCounts.push(stock.ownCount);
     }
-    return res.json({ values: values });
+    return res.json({ values, ownCounts });
 });
 
-app.get("/stockLeaderboard", cacheSeconds(20), async (req, res) => {
-    const users = await User.find({});
+app.get("/stockLeaderboard", cacheSeconds(30), async (req, res) => {
+    const users = await User.find({}, { name: 1, balance: 1, stocks: 1 });
     const stocks = await getStockMarketStocksInOrder();
-    const leaderboardArr: LeaderboardEntry[] = [];
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        const userStocks = user.stocks;
-        let portfolioBalance = user.balance;
-        for (let j = 0; j < stocks.length; j++) {
-            const stock = stocks[j];
-            const userStockCount = userStocks[j];
-            portfolioBalance += userStockCount * stock.stockValue;
-        }
-        leaderboardArr.push({ name: user.name, portfolio: portfolioBalance });
-    }
-    return res.json(leaderboardArr);
+    const stockValues = stocks.map(s => s.stockValue);
+
+    const leaderboardArr = users.map(user => {
+        // Dot-product user.stocks × stockValues
+        const portfolioValue = user.stocks.reduce(
+            (sum, count, idx) => sum + count * stockValues[idx],
+            0
+        );
+
+        return {
+            name: user.name,
+            portfolio: user.balance + portfolioValue,
+        };
+    });
+
+    res.json(leaderboardArr);
 });
 
 app.get("/numChaps", cacheSeconds(20), async (req, res) => {

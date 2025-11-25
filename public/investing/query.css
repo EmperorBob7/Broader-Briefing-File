@@ -4,6 +4,10 @@
     .rangeRow {
         width: 50vw;
     }
+
+    stock-option {
+        width: 45%;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -12,8 +16,15 @@
     .rangeRow {
         width: 50vw;
     }
+
+    stock-option {
+        width: 30%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     /* Your CSS rules for medium devices */
+    stock-option {
+        width: 23%;
+    }
 }

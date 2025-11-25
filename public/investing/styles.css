@@ -120,13 +120,12 @@ main>div:first-child {
 }
 
 stock-option {
-    margin: 1vw;
+    margin: 0.5vw;
     padding: 1em;
     background-color: oklch(var(--bc));
     color: black;
     border-radius: 1em;
-    width: 20%;
-    min-width: 200px;
+    width: 18%;
 }
 
 stock-option>#stockName {
@@ -145,4 +144,8 @@ stock-option div {
 
 stock-option button {
     border: 2px solid black !important;
+}
+
+stock-option>#stockValue {
+    font-weight: bold;
 }

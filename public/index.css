@@ -226,7 +226,7 @@ iframe {
 
 #navbarPfp {
     width: 5vw;
-    filter: drop-shadow(0.05em 0.05em 0px var(--pink)) drop-shadow(0.05em 0.05em 0px var(--pink)) drop-shadow(0.03em 0.03em 0px var(--pink));
+    /* filter: drop-shadow(0.05em 0.05em 0px var(--pink)) drop-shadow(0.05em 0.05em 0px var(--pink)) drop-shadow(0.03em 0.03em 0px var(--pink)); */
 }
 
 #navbarPfp:hover {

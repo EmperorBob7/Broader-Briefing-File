@@ -40,6 +40,7 @@ let stockData: StockData[];
 let chart: Chart;
 const stockCounts: number[] = []; // Number of stocks owned by User
 let stockValues: number[] = [];   // Stock values for Stock Listing UI
+let stockOwnCounts: number[] = [];
 
 const STARTING_CHAPTER = 257;
 document.addEventListener('DOMContentLoaded', async () => {
@@ -275,7 +276,9 @@ async function loadStockValues(create: boolean = false) {
     }
 
     const res = await fetch("/stockValues");
-    stockValues = (await res.json()).values;
+    const json = await res.json();
+    stockValues = json.values;
+    stockOwnCounts = json.ownCounts;
 
     if (create) {
         loadStocks();
@@ -315,7 +318,9 @@ function updateStocks() {
     for (let i = 0; i < stockData.length; i++) {
         const stockOption = stockContainer.querySelector(`#stock${i}`) as HTMLElement;
         const stockValue = stockOption.querySelector("#stockValue") as HTMLElement;
+        const totalCount = stockOption.querySelector("#totalCount") as HTMLElement;
         stockValue.innerText = `Value: $${stockValues[i]}`
+        totalCount.innerText = `Total Owned: ${stockOwnCounts[i]}`;
     }
 }
 
@@ -365,15 +370,19 @@ function createStockElement(stock: StockData, stockNumber: number) {
 
     const stockCount = document.createElement("p");
     stockCount.id = "stockCount";
-    stockCount.innerText = `Stock: ${stockCounts[stockNumber]}`;
+    stockCount.innerText = `You Own: ${stockCounts[stockNumber]}`;
+
+    const totalCount = document.createElement("p");
+    totalCount.id = "totalCount";
+    totalCount.innerText = `Total Owned: ${stockOwnCounts[stockNumber]}`;
 
     const stockValue = document.createElement("p");
     stockValue.id = "stockValue";
     stockValue.innerText = `Value: $${stockValues[stockNumber]}`;
 
-
     stockOption.appendChild(p);
     stockOption.appendChild(stockCount);
+    stockOption.appendChild(totalCount);
     stockOption.appendChild(stockValue);
     stockOption.appendChild(buttonContainer);
     return stockOption;
