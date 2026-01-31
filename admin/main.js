@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function updateStocks() {
     const data = [];
-    for (let i = 0; i < 12; i++) {
+    const NUM_STOCKS = 20;
+    for (let i = 0; i < NUM_STOCKS; i++) {
         data.push(parseInt(document.getElementById(`stock${i}Input`).value || "0"));
     }
     
