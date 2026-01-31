@@ -16,7 +16,7 @@
     text-wrap: nowrap;
 }
 
-#navHeader, #topNav a {
+#navHeader, #topNav > a {
     color: #FEFEFE;
     text-shadow:
         0.05em 0.05em 0 var(--pink),
@@ -59,10 +59,6 @@ footer p {
 
 header .drawer-side {
     z-index: 3;
-}
-
-#profileDropdownList {
-    z-index: 5;
 }
 
 /* Other */
@@ -162,6 +158,39 @@ iframe {
     z-index: 10000;
 }
 
+.alert {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: row;
+  align-content: flex-start;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+  border-radius: var(--rounded-box, 1rem);
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  padding: 1rem;
+  --tw-text-opacity: 1;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  --alert-bg: var(--fallback-b2,oklch(var(--b2)/1));
+  --alert-bg-mix: var(--fallback-b1,oklch(var(--b1)/1));
+  background-color: var(--alert-bg);
+}
+
+.alert-success {
+    background-color: var(--success);
+}
+
+.alert-error {
+    background-color: var(--error);
+}
+
+.alert-warning {
+    background-color: var(--warning);
+}
+
 .alert-outline {
     border: 2px solid black;
     box-shadow: -0.2em 0.2em 0.1em rgba(0, 0, 0, 0.5);
@@ -202,14 +231,14 @@ main .btn:hover {
 
 #loggedInContainer {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     position: absolute;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
-    color: var(--error);
+    color: black;
     background-color: var(--success);
     z-index: 100;
 }

@@ -354,12 +354,12 @@ function createStockElement(stock: StockData, stockNumber: number) {
     p.appendChild(span);
 
     const buyButton = document.createElement("button");
-    buyButton.classList.add("btn", "btn-info", "join-item");
+    buyButton.classList.add("btn", "btn-primary");
     buyButton.innerText = "Buy";
     buyButton.addEventListener("click", () => { tradeStock(stockNumber, StockAction.Buy) });
 
     const sellButton = document.createElement("button");
-    sellButton.classList.add("btn", "btn-error", "join-item");
+    sellButton.classList.add("btn", "btn-error");
     sellButton.innerText = "Sell";
     sellButton.addEventListener("click", () => { tradeStock(stockNumber, StockAction.Sell) });
 

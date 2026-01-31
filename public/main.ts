@@ -6,6 +6,10 @@ let userName: string;
 // Push functions to be called after logging in is detected!
 export const loginListeners: (() => Promise<void>)[] = [];
 
+const profileDropdownList = $id("profileDropdownList");
+const pfpIcon = $id("pfpIcon");
+const pfpImage = pfpIcon.querySelector("img") as HTMLImageElement;
+
 declare interface TokenJSON {
   msg: {
     name: string;
@@ -17,8 +21,32 @@ document.addEventListener('DOMContentLoaded', () => {
     getJWT();
     $id("modalLoginButton").addEventListener("click", login);
     $id("modalRegisterButton").addEventListener("click", register);
+    pfpIcon.addEventListener("click", () => toggleLoginDropdown(false));
+    profileDropdownList.style.display = "none";
     accountRuleInputs();
+
+    window.addEventListener('pointerdown', (e) => {
+        const target = e.target;
+        if (target != null) {
+            if (e.target == pfpImage) {
+                return;
+            }
+            if (profileDropdownList.contains(target as Node)) {
+                return;
+            }
+        }
+        toggleLoginDropdown(true);
+    });
 });
+
+function toggleLoginDropdown(hideOverride: boolean = false) {
+    const display: string = profileDropdownList.style.display;
+    if (display === "none" && !hideOverride) {
+        profileDropdownList.style.display = "";
+    } else {
+        profileDropdownList.style.display = "none";
+    }
+}
 
 function accountRuleInputs() {
     const usernameLogin = $idInput("usernameInput");
@@ -82,15 +110,14 @@ export function isLoggedIn(): boolean {
 }
 
 function loggedOutDropdown() {
-    const list = $id("profileDropdownList");
-    list.innerHTML = ``;
+    profileDropdownList.innerHTML = ``;
 
     const loginLI = document.createElement("li");
     const loginA = document.createElement("a");
     loginA.id = "loginButton";
     loginA.innerText = `Login`;
     loginLI.appendChild(loginA);
-    list.appendChild(loginLI);
+    profileDropdownList.appendChild(loginLI);
 
     loginA.addEventListener("click", () => {
         $idDialog("loginModal").showModal();
@@ -101,7 +128,7 @@ function loggedOutDropdown() {
     registerA.id = "registerButton";
     registerA.innerText = `Register`;
     registerLI.appendChild(registerA);
-    list.appendChild(registerLI);
+    profileDropdownList.appendChild(registerLI);
 
     registerA.addEventListener("click", () => {
         $idDialog("registerModal").showModal();
@@ -109,8 +136,7 @@ function loggedOutDropdown() {
 }
 
 function loggedInDropdown(tokenJSON: TokenJSON) {
-    const list = $id("profileDropdownList");
-    list.innerHTML = ``;
+    profileDropdownList.innerHTML = ``;
 
     userName = tokenJSON.msg.name;
     userID = tokenJSON.msg.userID;
@@ -119,14 +145,14 @@ function loggedInDropdown(tokenJSON: TokenJSON) {
     const nameA = document.createElement("a");
     nameA.innerText = `Logged in as ${tokenJSON.msg.name}`;
     nameLI.appendChild(nameA);
-    list.appendChild(nameLI);
+    profileDropdownList.appendChild(nameLI);
 
     const logoutLI = document.createElement("li");
     const logoutA = document.createElement("a");
     logoutA.id = "logoutButton";
     logoutA.innerText = `Logout`;
     logoutLI.appendChild(logoutA);
-    list.appendChild(logoutLI);
+    profileDropdownList.appendChild(logoutLI);
 
     logoutA.addEventListener("click", logout);
 }

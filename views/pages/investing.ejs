@@ -25,10 +25,9 @@
         <%- include("../partials/header") %>
     </header>
 
-    <!-- <main class="text-center items-start flex flex-row"> -->
-    <main class="text-center items-center flex flex-col">
-        <div>
-            <a href="/leaderboard"><button class="btn btn-info mb-2">Leaderboard</button></a>
+    <main class="text-center center flex flex-col">
+        <div class="m-auto">
+            <a href="/leaderboard"><button class="btn btn-primary mb-1">Leaderboard</button></a>
             <div id="barWrapper">
                 <canvas id="barGraph"></canvas>
             </div>
@@ -47,37 +46,28 @@
                     <h1 id="notLoggedInText">Must be Logged In</h1>
                 </a>
             </div>
-            <div class="md:join md:join-horizontal">
-                <button class="join-item btn btn-success mb-1" id="hideAllStocks">Hide All Stocks</button>
-                <button class="join-item btn btn-success mb-1" id="showAllStocks">Show All Stocks</button>
-                <button class="join-item btn btn-success mb-1" id="toggleOwnedStocks">Toggle Owned Stocks</button>
-                <button class="join-item btn btn-success mb-1" id="toggleUnownedStocks">Toggle Unowned Stocks</button>
+            <div class="flex flex-row center w-100">
+                <button class=" btn btn-primary mb-2" id="hideAllStocks">Hide All Stocks</button>
+                <button class=" btn btn-primary mb-2" id="showAllStocks">Show All Stocks</button>
+                <button class=" btn btn-primary mb-2" id="toggleOwnedStocks">Toggle Owned Stocks</button>
+                <button class=" btn btn-primary mb-2" id="toggleUnownedStocks">Toggle Unowned Stocks</button>
             </div>
             <p class="text-4xl">Balance: $<span id="balanceText">0</span></p>
-            <div class="join">
-                <label class="join-item">Buy/Sell Count: </label>
-                <div class="rangeRow m-auto join-item">
+            <div class="join flex flex-col center">
+                <label class="">Buy/Sell Count: </label>
+                <div class="rangeRow m-auto">
                     <span class="rangeValues ml-2 w-10" id="buySellDisplay">1</span>
                     <div class="sliderContainer">
                         <input value="1" min="1" max="50" step="1" type="range" id="buyCount" class="slider" />
                     </div>
                 </div>
             </div>
-            <div id="stockContainer"></div>
-            <div class="alert alert-warning sm:w-75 md:w-3/5 lg:w-2/6 m-auto text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
+            <div id="stockContainer" class="mb-2"></div>
+
+            <div class="alert alert-warning m-auto text-center mb-2">
                 <p>Sell value is $1 less than the buy value.</p>
             </div>
-            <div class="alert alert-warning sm:w-75 md:w-3/5 lg:w-2/6 m-auto text-center mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
+            <div class="alert alert-warning m-auto text-center">
                 <p>Price changes every 5 stocks so value seen may not be accurate.</p>
             </div>
         </div>
