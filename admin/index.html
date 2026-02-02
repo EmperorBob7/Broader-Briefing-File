@@ -5,211 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="daisy.css">
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
-    <header>
-        <div class="navbar bg-success text-accent-content">
-            <!--Navbar-->
-            <div class="flex-none">
-                <div class="drawer">
-                    <!--Menu Drawer-->
-                    <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
-                    <div class="drawer-content">
-                        <!--Menu/Hamburger Icon-->
-                        <label for="menu-drawer" class="btn btn-square btn-ghost drawer-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                class="inline-block w-5 h-5 stroke-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </label>
-                    </div>
-                    <div class="drawer-side">
-                        <label for="menu-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-                        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                            <!-- Sidebar content here -->
-                            <li><a href="/admin/">Admin</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-1">
-                <a class="btn btn-ghost text-xl" href="/admin/">Admin BBF</a>
-            </div>
-            <div class="flex-none navLinks hidden flex">
-                <ul class="menu menu-horizontal px-1">
-                    <li><a href="/canon"     id="canonNav">Canon</a></li>
-                    <li><a href="/investing" id="investingNav">Investing</a></li>
-                    <li><a href="/ocmaker"   id="ocMakerNav">OC Maker v1</a></li>
-                    <li><a href="/ocmaker2"  id="ocMaker2Nav">OC Maker v2</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="toast toast-end">
-            <div id="globalToastContainer">
-            </div>
-        </div>
-    </header>
-
-    <main class="flex flex-1 w-75 m-auto flex-col">
-        <h1 class="text-3xl mt-2" id="stocksHeader">Stocks</h1>
+    <main class="flex m-auto flex-col">
+        <h1 class="text-3xl" id="stocksHeader">Stocks</h1>
         <hr class="mb-2" />
         <p class="text-xl">Stocks Are <span id="stockBox" class="btn btn-success text-xl ml-2">...</span></p>
         <br />
-        <div class="w-1/2">
-            <details class="collapse bg-base-content text-info-content">
-                <summary class="collapse-title text-xl font-medium">Click to open/close. Numbers +- Relative Values
-                </summary>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Utagawa
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock0Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Oji
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock1Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kakizaki
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock2Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kitazoe
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock3Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kuruma
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock4Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kodera
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock5Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Suwa
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock6Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Ninomiya
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock7Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Mizukami
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock8Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Murakami
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock9Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Wakamura
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock10Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Katagiri
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock11input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Miwa
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock12Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kako
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock13Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Arashiyama
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock14Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kusakabe
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock15Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Kazama
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock16Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Fuyushima
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock17Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Tamakoma-1
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock18Input" />
-                    </label>
-                </div>
-                <div class="collapse-content">
-                    <label class="input input-bordered flex items-center gap-2 bg-base-100 text-success">
-                        Tachikawa
-                        <input type="number" class="grow" placeholder="..." class="text-info-content"
-                            id="stock19Input" />
-                    </label>
-                </div>
-                <button class="btn btn-success m-auto mb-2" id="stockSubmitButton">Submit</button>
-            </details>
+        <div style="width: 50%;">
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Utagawa
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock0Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Oji
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock1Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kakizaki
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock2Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kitazoe
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock3Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kuruma
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock4Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kodera
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock5Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Suwa
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock6Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Ninomiya
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock7Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Mizukami
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock8Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Murakami
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock9Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Wakamura
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock10Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Katagiri
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock11input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Miwa
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock12Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kako
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock13Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Arashiyama
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock14Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kusakabe
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock15Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Kazama
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock16Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Fuyushima
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock17Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Tamakoma-1
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock18Input" />
+            </label>
+
+            <label class="input input-bordered flex items-center gap bg-base-100 text-success">
+                Tachikawa
+                <input type="number" class="grow" placeholder="..." class="text-info-content" id="stock19Input" />
+            </label>
+            <button class="btn btn-success m-auto mb-2" id="stockSubmitButton">Submit</button>
         </div>
     </main>
-
     <script src="./main.js" type="module"></script>
 </body>
 

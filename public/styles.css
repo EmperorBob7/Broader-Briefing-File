@@ -112,7 +112,25 @@
 
 .input {
   padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+}
+
+.input-bordered {
+  border: 1px solid var(--brightGray);
+  background-color: var(--background);
+}
+
+.gap {
+  margin: 1%;
+}
+
+input[type="number"] {
+  padding: 1%;
+  margin-left: 2%;
+  background-color: var(--neutral);
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+  border-radius: 0.5rem;
 }
 
 /* Button */
