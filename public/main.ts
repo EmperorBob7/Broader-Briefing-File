@@ -10,6 +10,10 @@ const profileDropdownList = $id("profileDropdownList");
 const pfpIcon = $id("pfpIcon");
 const pfpImage = pfpIcon.querySelector("img") as HTMLImageElement;
 
+const menuBtn = $id('menuBtn');
+const sideMenu = $id('sideMenu');
+const sideMenuBG = $id('sideMenuBG');
+
 declare interface TokenJSON {
   msg: {
     name: string;
@@ -25,14 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
     profileDropdownList.style.display = "none";
     accountRuleInputs();
 
+    menuBtn.addEventListener("click", (e) => {
+        sideMenu.classList.toggle('open');
+        sideMenuBG.classList.toggle('open');
+    });
+
     window.addEventListener('pointerdown', (e) => {
         const target = e.target;
         if (target != null) {
+            const targetNode = target as Node;
             if (e.target == pfpImage) {
                 return;
             }
-            if (profileDropdownList.contains(target as Node)) {
+            if (profileDropdownList.contains(targetNode)) {
                 return;
+            }
+            if (!sideMenu.contains(targetNode) && !menuBtn.contains(targetNode)) {
+                sideMenu.classList.remove('open');
+                sideMenuBG.classList.remove('open');
             }
         }
         toggleLoginDropdown(true);
