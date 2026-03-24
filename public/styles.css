@@ -99,17 +99,6 @@
 
 /* Elements */
 
-.footer {
-  width: 100%;
-  padding: 1rem;
-  color: var(--light);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 0.875rem;
-  height: 10vh;
-}
-
 .input {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -186,7 +175,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 0.25rem 0.25rem;
   background-color: var(--success);
   color: white;
   font-family: sans-serif;
