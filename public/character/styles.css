@@ -30,7 +30,7 @@
 main > div {
     padding: 0.5em;
     background-color: white;
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -72,11 +72,6 @@ main > div {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position-x: center;
-}
-
-#bbfContainer {
-    overflow: scroll;
-    aspect-ratio: 16 / 9;
 }
 
 .chart-container {
