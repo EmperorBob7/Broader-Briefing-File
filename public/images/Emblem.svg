@@ -14,7 +14,19 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg">
+
+  <style>
+    @font-face {
+      font-family: Stencil Regular;
+      src: url("../fonts/Stencil Regular.ttf");
+    }
+    text {
+      font-family: 'Stencil Regular';
+    }
+  </style>
+
+   <sodipodi:namedview
      id="namedview1"
      pagecolor="#505050"
      bordercolor="#ffffff"
@@ -122,7 +134,7 @@
        transform="matrix(0.26458333,0,0,0.26458333,18.821543,23.600821)"
        sodipodi:nodetypes="ssssscsscs" /><text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Glaser Becker Stencil';-inkscape-font-specification:'Glaser Becker Stencil';text-align:center;text-anchor:middle;white-space:pre;inline-size:14.0343;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Stencil Regular';-inkscape-font-specification:'Glaser Becker Stencil';text-align:center;text-anchor:middle;white-space:pre;inline-size:14.0343;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
        x="30.842093"
        y="35.223034"
        id="RankABC"
@@ -132,7 +144,7 @@
          y="35.223034"
          id="tspan1">A</tspan></text><text
        xml:space="preserve"
-       style="font-size:9.87778px;font-family:'Glaser Becker Stencil';-inkscape-font-specification:'Glaser Becker Stencil';text-align:center;text-anchor:middle;fill:#ffffff;stroke:#000000;stroke-width:0.264583"
+       style="font-size:9.87778px;font-family:'Stencil Regular';-inkscape-font-specification:'Glaser Becker Stencil';text-align:center;text-anchor:middle;fill:#ffffff;stroke:#000000;stroke-width:0.264583"
        x="44.912971"
        y="40.228233"
        id="RankText"
@@ -141,4 +153,5 @@
          id="tspan9"
          style="font-size:9.87778px;fill:#ffffff;stroke-width:0.264583"
          x="44.912971"
-         y="40.228233">00</tspan></text></g></svg>
+         y="40.228233">00</tspan></text></g>
+</svg>

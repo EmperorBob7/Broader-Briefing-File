@@ -201,6 +201,10 @@ input[type="number"] {
   align-items: center;
 }
 
+#menuBtn {
+  margin-left: 1%;
+}
+
 #menuBtn, .navbar-links a {
   text-decoration: none;
   color: white;
@@ -404,4 +408,8 @@ dialog {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.clippedBox {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }

@@ -13,43 +13,101 @@
     color: white;
     padding: 5% 20% 2% 2%;
     /* padding-right: 5%; */
-    min-width: 70%;
-    max-width: 40vw;
+    width: 90%;
     margin: auto;
     letter-spacing: .1rem;
     text-indent: 0.25em;
+    display: block;
 }
 
 #characterNameContainer {
-    grid-column-start: 2;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-area: name;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-main > div {
+#bbfContainer {
     padding: 0.5em;
     background-color: white;
     width: 100%;
     margin: auto;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    
     display: grid;
     grid-template-columns: 1.5fr 1.5fr 0.5fr 0.5fr 1.5fr;
     grid-template-rows: auto auto;
+
     align-items: stretch;
     overflow-x: hidden;
     overflow-y: hidden;
+    grid-template-areas: 
+        "emblem name name name name"
+        "detail sub-t radar-c radar-c main-t"
+    ;
+}
+
+@media (max-width: 1100px) {
+    #bbfContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 10px 0px;
+        grid-template-areas:
+            "emblem    name    name"
+            "sub-t   radar-c main-t"
+            ".  detail  ."
+        ;
+    }
+    
+    #emblem {
+        width: 90%;
+    }
+}
+
+@media (max-width: 825px) {
+    #bbfContainer {
+        grid-template-columns: 1fr 0.25fr 1fr   ;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "name   name    name"
+            "sub-t  emblem       main-t"
+            "detail radar-c radar-c"
+        ;
+        gap: 5px;
+    }
+
+    #emblem {
+        width: 90%;
+    }
+}
+
+@media (max-width: 650px) {
+    #bbfContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-areas:
+            "name"
+            "emblem"
+            "main-t"
+            "sub-t"
+            "radar-c"
+            "detail"
+        ;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    #emblem {
+        width: 20%;
+    }
 }
 
 #emblem {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-area: emblem;
     margin: auto;
-    width: 40%;
     animation: fadeIn 1s normal forwards;
+    width: 40%;
 }
 
 @keyframes fadeIn {
@@ -77,13 +135,9 @@ main > div {
 .chart-container {
     position: relative;
     width: 360px;
-    height: 360px;
+    aspect-ratio: 1 / 1;
     margin: auto;
-
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: radar-c;
 }
 
 #total {
@@ -121,11 +175,7 @@ main > div {
     background-color: #111;
     width: 100%;
     height: 100%;
-
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: sub-t;
 
     display: flex;
     flex-direction: column;
@@ -140,11 +190,7 @@ main > div {
     background-color: #111;
     width: 100%;
     height: 100%;
-
-    grid-column-start: 5;
-    grid-column-end: 6;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: main-t;
 
     display: flex;
     flex-direction: column;
@@ -178,22 +224,6 @@ main > div {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-#mainTriggerContainer::after, #subTriggerContainer::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    z-index: 2;
-
-    border-width: 0.4em;
-    border-top-color: #111;
-    border-left-color: #111;
-    border-right-color: white;
-    border-bottom-color: white;
 }
 
 #mainTriggerContainer::before {
@@ -285,16 +315,21 @@ trigger-block .triggerImage {
     grid-row-end: 3;
 
     height: 90%;
-    width: 90%;
+    aspect-ratio: 1 / 1;
     margin-left: auto;
     padding: 10%;
     background-color: #111;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 trigger-block .triggerImage img {
-    width: 90%;
+    max-width: 90%;
+    max-height: 90%;
+    width: 100px;
     margin: auto;
+    object-fit: contain;
 }
 
 trigger-block .triggerImage::after {
@@ -327,6 +362,7 @@ trigger-block .triggerType {
     background-size: 100% 100%;
     background-position-x: center;
     background-position-y: bottom;
+    white-space: nowrap;
 }
 
 trigger-block .triggerName {
@@ -345,6 +381,8 @@ trigger-block .triggerName {
 
 .freeTrigger .triggerImage {
     opacity: 0;
+    display: none;
+    width: 0;
 }
 
 .freeTrigger .triggerType {
@@ -359,12 +397,10 @@ trigger-block .triggerName {
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: detail;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #detailsList {
@@ -372,7 +408,7 @@ trigger-block .triggerName {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position-x: center;
-    padding-top: 7vh;
+    padding-top: 25%;
     padding-bottom: 3vh;
     padding-left: 1vw;
     padding-right: 1vw;
